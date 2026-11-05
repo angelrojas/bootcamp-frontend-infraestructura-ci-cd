@@ -3,7 +3,7 @@ name: Ejecutando Tests # El nombre no importa, es una string
 # Cada cuando quiero que se ejecute este workflow
 on: 
   push: 
-    branches: ["develop"] # Es el nombre de las ramas
+    branches: ["main"] # Es el nombre de las ramas
  # Ejecute cada cierta cantidad de tiempo
  # schedule:
     #- cron: '' # Lunes a las 8am
@@ -33,10 +33,10 @@ jobs: # se pueden definir n cantidad de Jobs
     runs-on: windows-latest
     steps:
       - uses: actions/checkout@v4
-      - name: Setup NodeJs v20 # El nombre es una string
+      - name: Setup NodeJs v24 # El nombre es una string
         uses: actions/setup-node@v4
         with: 
-          node-version: 20
+          node-version: 24
           cache: 'npm'
       - name: Instalar Dependencias
         run: npm ci # Este comando no es necesario que exista en mi package.json, es uso exclusivo de CI
@@ -50,10 +50,10 @@ jobs: # se pueden definir n cantidad de Jobs
     strategy:
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-        node-version: [18, 20]
+        node-version: [24]
         exclude:
           - os: macos-latest
-            node-version: 18
+            node-version: 24
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v4

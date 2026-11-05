@@ -32,9 +32,9 @@ jobs: # se pueden definir n cantidad de Jobs
     # needs: [test] Se ejecuta una despues de la otra con este comando
     runs-on: windows-latest
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup NodeJs v24 # El nombre es una string
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with: 
           node-version: 24
           cache: 'npm'
@@ -56,9 +56,9 @@ jobs: # se pueden definir n cantidad de Jobs
             node-version: 24
     runs-on: ${{ matrix.os }}
     steps:
-      - uses: actions/checkout@v4
+      - uses: actions/checkout@v7
       - name: Setup Node.js ${{ matrix.node-version }}
-        uses: actions/setup-node@v4
+        uses: actions/setup-node@v7
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
